@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0F1A33">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="app.css">
+<title>تراز — وام، اقساط و مقایسه</title>
+<script>try{var t=JSON.parse(localStorage.getItem('taraz2-set')||'{}').theme;if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header class="bar-top"><div class="bar-in">
+ <a class="brand" href="./index.html" aria-label="تراز">
+  <svg viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" fill="#0F1A33"/><path d="M96 330h320" stroke="#EAEFF2" stroke-width="28" stroke-linecap="round"/><circle cx="352" cy="226" r="62" fill="#D9A21B"/><rect x="108" y="186" width="120" height="80" rx="20" fill="#1F8F86"/><path d="M256 330v70" stroke="#EAEFF2" stroke-width="28" stroke-linecap="round"/></svg>
+  <span><b>تراز</b><small>وام و اقساط، با نگاه به تورم</small></span></a>
+ <div class="unit" role="group" aria-label="واحد پول"><button data-unit="toman" aria-pressed="true">تومان</button><button data-unit="rial" aria-pressed="false">ریال</button></div>
+ <button class="chip" id="themeBtn" aria-label="تغییر پوسته"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
+</div></header>
+
+<main>
+<!-- ===================== وام ===================== -->
+<section class="panel on" id="p-loan" role="tabpanel"><div class="split">
+ <div class="in">
+  <div class="sheet">
+   <h2>محاسبه وام</h2><p class="sub">قسط، سود کل، نرخ مؤثر و ارزش واقعی بازپرداخت.</p>
+   <div class="lb">روش بازپرداخت</div>
+   <div class="seg" data-id="lt" style="--n:2">
+    <button data-v="annuity">اقساط مساوی</button><button data-v="principal">اصل مساوی (نزولی)</button>
+    <button data-v="bullet">یک‌جا در سررسید</button><button data-v="gharz">قرض‌الحسنه (کارمزد)</button></div>
+   <input type="hidden" id="lt" value="annuity">
+   <div class="g" style="margin-top:12px">
+    <div class="w"><label for="lp">مبلغ وام</label><div class="fld"><input class="m" id="lp" inputmode="numeric" autocomplete="off" placeholder="۱۰۰٬۰۰۰٬۰۰۰"><span class="suf u"></span></div><div class="hint" data-for="lp"></div></div>
+    <div><label for="lr" id="lrl">نرخ سود سالانه</label><div class="fld"><input class="p" id="lr" inputmode="decimal" value="23"><span class="suf">٪</span></div></div>
+    <div><label for="lm">مدت بازپرداخت</label><div class="fld"><input class="t" id="lm" inputmode="numeric" value="24"><span class="suf">ماه</span></div></div>
+    <div><label for="lg">دوره تنفس</label><div class="fld"><input class="t" id="lg" inputmode="numeric" value="0"><span class="suf">ماه</span></div></div>
+    <div><label for="ld">تاریخ دریافت وام (شمسی)</label><div class="fld"><input id="ld" inputmode="numeric" placeholder="۱۴۰۵/۰۸/۰۳"></div></div>
+    <div class="w"><label for="linf">تورم سالانه مورد انتظار (برای ارزش واقعی)</label><div class="fld"><input class="p" id="linf" inputmode="decimal" value="35"><span class="suf">٪</span></div></div>
+   </div>
+   <details class="more"><summary>پرداخت اضافه</summary>
+    <label for="lx">پرداخت اضافه ماهانه روی اصل</label><div class="fld"><input class="m" id="lx" inputmode="numeric"><span class="suf u"></span></div>
+    <label for="ly">پرداخت اضافه یک‌جا</label><div class="fld"><input class="m" id="ly" inputmode="numeric"><span class="suf u"></span></div>
+    <div class="g"><div><label for="lk">بعد از قسط شماره</label><div class="fld"><input id="lk" inputmode="numeric" value="12"></div></div>
+    <div><label for="lmo">اثر پرداخت یک‌جا</label><select id="lmo"><option value="term">کاهش مدت</option><option value="pay">کاهش قسط</option></select></div></div>
+   </details>
+   <details class="more"><summary>هزینه‌های جانبی و توان بازپرداخت</summary>
+    <div class="g"><div><label for="lfee">کارمزد صدور</label><div class="fld"><input class="p" id="lfee" inputmode="decimal" value="0"><span class="suf">٪</span></div></div>
+    <div><label for="lfix">بیمه، تمبر، ثبت</label><div class="fld"><input class="m" id="lfix" inputmode="numeric"><span class="suf u"></span></div></div></div>
+    <label for="linc">درآمد ماهانه شما</label><div class="fld"><input class="m" id="linc" inputmode="numeric"><span class="suf u"></span></div>
+   </details>
+   <div class="note">محاسبه تقریبی و برای تصمیم اولیه است. مبنای نهایی، قرارداد و آیین‌نامه بانک است.</div>
+  </div>
+ </div>
+ <div class="out" id="loanOut"></div>
+</div></section>
+
+<!-- ===================== مقایسه ===================== -->
+<section class="panel" id="p-cmp" role="tabpanel">
+ <div class="seg" data-id="cm" style="--n:2;max-width:380px;margin-bottom:14px"><button data-v="loans">مقایسه وام‌ها</button><button data-v="assets">وام یا سرمایه‌گذاری؟</button></div>
+ <input type="hidden" id="cm" value="loans">
+ <div id="cm-loans">
+  <div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><h2>وام‌ها را کنار هم بگذار</h2><p class="sub" style="margin:2px 0 0">تا ۴ وام؛ با کارمزد و تورم یکسان مقایسه می‌شوند.</p></div>
+   <span style="display:flex;gap:8px"><button class="btn ghost sm" id="cAddFrom">افزودن وام محاسبه‌گر</button><button class="btn sm" id="cAdd">+ وام جدید</button></span></div>
+   <div class="g" style="margin-top:12px"><div><label for="cinf">تورم سالانه (برای ارزش واقعی)</label><div class="fld"><input class="p" id="cinf" inputmode="decimal" value="35"><span class="suf">٪</span></div></div></div>
+  </div>
+  <div class="cgrid" id="cCards" style="margin-top:14px"></div>
+  <div id="cOut" style="margin-top:14px"></div>
+ </div>
+ <div id="cm-assets" hidden><div class="split">
+  <div><div class="sheet"><h2>سرمایه و فرض‌ها</h2><p class="sub">رشد طلا و دلار پیش‌بینی نیست؛ فرض خودت است.</p>
+   <div class="g">
+    <div class="w"><label for="aP">سرمایه</label><div class="fld"><input class="m" id="aP" inputmode="numeric"><span class="suf u"></span></div><div class="hint" data-for="aP"></div></div>
+    <div><label for="aN">مدت</label><div class="fld"><input class="t" id="aN" inputmode="numeric" value="12"><span class="suf">ماه</span></div></div>
+    <div><label for="aI">تورم سالانه</label><div class="fld"><input class="p" id="aI" inputmode="decimal" value="35"><span class="suf">٪</span></div></div>
+    <div><label for="aD">سود سپرده</label><div class="fld"><input class="p" id="aD" inputmode="decimal" value="23"><span class="suf">٪</span></div></div>
+    <div><label for="aG">رشد سالانه طلا</label><div class="fld"><input class="p" id="aG" inputmode="decimal" value="30"><span class="suf">٪</span></div></div>
+    <div><label for="aGs">اختلاف خرید و فروش طلا</label><div class="fld"><input class="p" id="aGs" inputmode="decimal" value="3"><span class="suf">٪</span></div></div>
+    <div><label for="aU">رشد سالانه دلار</label><div class="fld"><input class="p" id="aU" inputmode="decimal" value="25"><span class="suf">٪</span></div></div>
+    <div><label for="aUs">اختلاف خرید و فروش دلار</label><div class="fld"><input class="p" id="aUs" inputmode="decimal" value="1.5"><span class="suf">٪</span></div></div>
+   </div></div>
+   <div class="sheet"><h2>سناریوی وام (اختیاری)</h2><p class="sub">وام می‌گیری و پولش را در یک دارایی می‌گذاری. مبلغ را خالی بگذار تا حذف شود.</p>
+    <div class="g"><div class="w"><label for="aL">مبلغ وام</label><div class="fld"><input class="m" id="aL" inputmode="numeric"><span class="suf u"></span></div></div>
+    <div><label for="aLr">نرخ سود وام</label><div class="fld"><input class="p" id="aLr" inputmode="decimal" value="23"><span class="suf">٪</span></div></div>
+    <div><label for="aLa">سرمایه‌گذاری در</label><select id="aLa"><option value="g">طلا</option><option value="u">دلار</option><option value="d">سپرده</option></select></div></div></div>
+  </div>
+  <div class="out" id="aOut"></div>
+ </div></div>
+</section>
+
+<!-- ===================== سپرده ===================== -->
+<section class="panel" id="p-dep" role="tabpanel"><div class="split">
+ <div class="sheet"><h2>سود سپرده</h2><p class="sub">ساده، مرکب یا پرداخت ماهانه؛ با ارزش واقعی پس از تورم.</p>
+  <div class="lb">نوع سود</div>
+  <div class="seg" data-id="dm" style="--n:3"><button data-v="simple">ساده</button><button data-v="compound">مرکب ماهانه</button><button data-v="payout">پرداخت ماهانه</button></div><input type="hidden" id="dm" value="simple">
+  <div class="g" style="margin-top:12px">
+   <div class="w"><label for="dA">مبلغ سپرده</label><div class="fld"><input class="m" id="dA" inputmode="numeric"><span class="suf u"></span></div><div class="hint" data-for="dA"></div></div>
+   <div><label for="dr">نرخ سود سالانه</label><div class="fld"><input class="p" id="dr" inputmode="decimal" value="23"><span class="suf">٪</span></div></div>
+   <div><label for="dn">مدت</label><div class="fld"><input class="t" id="dn" inputmode="numeric" value="12"><span class="suf">ماه</span></div></div>
+   <div><label for="dinf">تورم سالانه</label><div class="fld"><input class="p" id="dinf" inputmode="decimal" value="35"><span class="suf">٪</span></div></div>
+   <div><label for="dd">روزهای ماه</label><select id="dd"><option>29</option><option selected>30</option><option>31</option></select></div>
+  </div></div>
+ <div class="out" id="depOut"></div>
+</div></section>
+
+<!-- ===================== سکه ===================== -->
+<section class="panel" id="p-coin" role="tabpanel"><div class="split">
+ <div class="sheet"><h2>حباب سکه</h2><p class="sub">قیمت‌ها را هر دو با یک واحد وارد کن. قیمت‌ها خودکار گرفته نمی‌شوند.</p>
+  <label for="bt">نوع سکه</label><select id="bt"><option value="8.133">تمام (امامی / بهار آزادی)</option><option value="4.0665">نیم‌سکه</option><option value="2.03325">ربع‌سکه</option><option value="1">گرمی</option></select>
+  <label for="bc">قیمت بازار سکه</label><div class="fld"><input class="m" id="bc" inputmode="numeric"><span class="suf u"></span></div>
+  <label for="bg">قیمت هر گرم طلای ۱۸ عیار</label><div class="fld"><input class="m" id="bg" inputmode="numeric"><span class="suf u"></span></div>
+  <div class="note">ارزش ذاتی = وزن × (۹۰۰÷۷۵۰) × قیمت گرم ۱۸. حباب = قیمت بازار − ارزش ذاتی.</div></div>
+ <div class="out" id="coinOut"><div class="empty">قیمت سکه و طلا را وارد کن تا حباب را ببینی.</div></div>
+</div></section>
+
+<!-- ===================== بیشتر ===================== -->
+<section class="panel" id="p-more" role="tabpanel"><div style="max-width:640px">
+ <div class="sheet"><h2>نمایش</h2>
+  <div class="lb">ارقام</div><div class="seg" data-id="digits" style="--n:2"><button data-v="fa">فارسی ۱۲۳</button><button data-v="en">انگلیسی 123</button></div><input type="hidden" id="digits" value="fa">
+  <div class="lb">پوسته</div><div class="seg" data-id="theme" style="--n:3"><button data-v="auto">خودکار</button><button data-v="light">روشن</button><button data-v="dark">تیره</button></div><input type="hidden" id="theme" value="auto">
+ </div>
+ <div class="sheet"><h2>داده‌های من</h2><p class="sub">همه‌چیز فقط روی همین دستگاه می‌ماند. برای انتقال یا نگهداری، پشتیبان بگیر.</p>
+  <div class="acts"><button class="btn ghost" id="bk">پشتیبان‌گیری (فایل)</button><button class="btn ghost" id="rs">بازیابی از فایل</button><button class="btn ghost" id="rst">پاک‌کردن همه</button></div>
+  <input type="file" id="fi" accept=".json" hidden></div>
+ <div class="sheet"><h2>درباره تراز</h2><p class="note" style="margin-top:6px">تراز ابزار تخمینی است و توصیه مالی یا جایگزین محاسبه رسمی بانک نیست. نرخ‌ها، تورم و رشد دارایی‌ها همه فرض خودت هستند. ارزش واقعی بازپرداخت یعنی قسط‌ها را با نرخ تورم به قیمت امروز برگردانیم؛ فقط وقتی معنادار است که پول وام را در چیزی بگذاری که تورم را دنبال می‌کند.</p>
+  <p class="note">آفلاین کار می‌کند و هیچ داده‌ای به سرور نمی‌رود.</p></div>
+</div></section>
+</main>
+
+<nav class="tabs" role="tablist" aria-label="بخش‌ها">
+ <button role="tab" data-t="loan" aria-selected="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10.5h18M7 15h3"/></svg>وام</button>
+ <button role="tab" data-t="cmp" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></svg>مقایسه</button>
+ <button role="tab" data-t="dep" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v-7M22 20H2"/></svg>سپرده</button>
+ <button role="tab" data-t="coin" aria-selected="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>سکه</button>
+ <button role="tab" data-t="more" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>بیشتر</button>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="report"></div>
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
