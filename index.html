@@ -3,121 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#16213A">
-<meta name="description" content="تراز: وام، سپرده، طلا و دلار را کنار هم بسنج و سود واقعی پس از تورم را ببین. آفلاین و بدون ثبت‌نام.">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0A7F7C">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="تراز: وام، اقساط، سپرده، طلا و دلار را مقایسه کن و سود واقعی پس از تورم را ببین. آفلاین و بدون ثبت‌نام.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="aihub.bundle.css">
+<link rel="stylesheet" href="app.css">
 <title>تراز — پولت را از تورم جلو بینداز</title>
-<style>
-@font-face{font-family:Vazirmatn;src:url(fonts/vazirmatn.woff2) format("woff2");font-weight:100 900;font-display:swap}
-:root{--ink:#16213A;--sea:#1F8F86;--gold:#D9A21B;--bad:#C9432F;--bg:#EAEFF2;--card:#fff;--tx:#16213A;--mut:#5F6B80;--line:#D5DCE4}
-@media(prefers-color-scheme:dark){:root{--bg:#0E1424;--card:#172038;--tx:#E8EDF5;--mut:#93A0B8;--line:#27324F;--sea:#3CC4B8;--gold:#E8B73A;--bad:#FF8A76}}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.9 Vazirmatn,"IRANSans",Tahoma,sans-serif}
-a{color:inherit}.wrap{max-width:1040px;margin:auto;padding:0 20px}
-.hero{background:var(--ink);color:#fff;padding-bottom:64px}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top)) 0 12px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}.brand img{width:36px;height:36px;border-radius:10px}
-.nav a.l{font-size:14px;color:#B9C6DD;text-decoration:none;border:1px solid #33426A;padding:6px 14px;border-radius:999px}
-.hg{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:36px}
-h1{font-size:clamp(28px,5vw,46px);line-height:1.45;margin:0 0 16px;font-weight:800}
-.lead{color:#B9C6DD;margin:0 0 26px;max-width:46ch}
-.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.btn{height:52px;padding:0 28px;border-radius:14px;border:0;font:inherit;font-weight:800;font-size:16px;cursor:pointer;display:inline-flex;align-items:center;text-decoration:none}
-.btn.p{background:var(--gold);color:#16213A}.btn.s{background:transparent;color:#fff;border:1.5px solid #4A5A84}
-.btn:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.fine{font-size:13px;color:#8EA0C2;margin-top:14px}
-.demo{background:var(--card);color:var(--tx);border-radius:22px;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
-.demo h2{font-size:15px;margin:0 0 2px}.demo .sub{font-size:12.5px;color:var(--mut);margin:0 0 14px}
-.sl{display:flex;justify-content:space-between;font-size:13.5px}.sl b{font-variant-numeric:tabular-nums}
-input[type=range]{width:100%;accent-color:var(--gold);margin:6px 0 14px}
-.b{margin-top:12px}.b .h{display:flex;justify-content:space-between;font-size:13.5px}.b b{font-variant-numeric:tabular-nums}
-.t{position:relative;height:14px;background:var(--bg);border-radius:7px;margin-top:5px;overflow:hidden}
-.t:after{content:"";position:absolute;inset:0 auto 0 50%;width:2px;background:var(--mut);opacity:.5}
-.t i{position:absolute;top:0;bottom:0;border-radius:7px;transition:width .3s}.t i.p{inset-inline-start:50%;background:var(--sea)}.t i.n{inset-inline-end:50%;background:var(--bad)}
-.vd{margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--bg);font-size:13.5px;font-weight:700}
-section.f{padding:72px 0 8px}
-h2.t2{font-size:clamp(22px,3.4vw,30px);margin:0 0 28px;line-height:1.5}
-.fl{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
-.fl div{padding:20px 0;border-top:1px solid var(--line)}.fl h3{margin:0 0 4px;font-size:17px}.fl p{margin:0;color:var(--mut);font-size:15px}
-.how{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding-bottom:72px}
-.how h3{margin:0 0 10px;font-size:17px}.how ol{margin:0;padding-inline-start:22px;color:var(--mut)}.how li{margin-bottom:6px}
-.priv{background:var(--ink);color:#fff;border-radius:22px;padding:28px;margin-bottom:56px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
-.priv p{margin:0;color:#B9C6DD}.priv b{font-size:18px;display:block;color:#fff;margin-bottom:4px}
-footer{border-top:1px solid var(--line);padding:24px 0 calc(32px + env(safe-area-inset-bottom));font-size:13px;color:var(--mut)}
-dialog{border:0;border-radius:20px;padding:24px;max-width:420px;background:var(--card);color:var(--tx)}dialog::backdrop{background:rgba(10,15,30,.6)}
-dialog h3{margin:0 0 10px}dialog ol{padding-inline-start:22px}dialog .btn{height:44px;margin-top:8px;background:var(--ink);color:#fff}
-.hide{display:none!important}
-@media(max-width:820px){.hg,.fl,.how,.priv{grid-template-columns:1fr}.hg{gap:32px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.t i{transition:none}}
-</style>
+<script>try{var r=document.documentElement,t=localStorage.getItem('aihub-theme'),b=localStorage.getItem('aihub-brand');if(t==='light'||t==='dark')r.setAttribute('data-theme',t);if(b)r.setAttribute('data-brand',b)}catch(e){}</script>
 </head>
 <body>
-<header class="hero"><div class="wrap">
-<div class="nav"><div class="brand"><img src="icon-192.png" alt="">تراز</div><a class="l" href="app.html">ورود به برنامه</a></div>
-<div class="hg">
-<div>
-<h1>پولت را کجا بگذاری که از تورم جلو بزند؟</h1>
-<p class="lead">وام، سپرده، طلا و دلار را کنار هم بسنج و سود واقعی هر کدام را پس از تورم ببین. آفلاین است و ثبت‌نام نمی‌خواهد.</p>
-<div class="cta">
-<button class="btn p" id="inst">نصب برنامه</button>
-<a class="btn p hide" id="enter" href="app.html">ورود به برنامه</a>
-<a class="btn s" id="web" href="app.html">استفاده بدون نصب</a>
-</div>
-<div class="fine" id="fine">رایگان؛ حدود ۲۰۰ کیلوبایت و بدون حساب کاربری.</div>
-</div>
-<div class="demo" aria-live="polite">
-<h2>مقایسه نمونه، ۵۰ میلیون تومان در ۱۲ ماه</h2>
-<p class="sub">تورم را عوض کن و ببین کدام گزینه جلو می‌افتد.</p>
-<div class="sl"><label for="inf">تورم سالانه</label><b id="iv"></b></div>
-<input type="range" id="inf" min="10" max="60" value="35">
-<div id="bars"></div><div class="vd" id="vd"></div>
-<p class="sub" style="margin:12px 0 0">فرض نمونه: سپرده ۲۳٪، طلا ۳۰٪، دلار ۲۵٪ رشد. پیش‌بینی نیست؛ در برنامه فرض‌های خودت را وارد کن.</p>
-</div>
-</div></div></header>
-<main class="wrap">
-<section class="f"><h2 class="t2">ابزارهای یک بانکدار، در جیب تو</h2>
-<div class="fl">
-<div><h3>ترازوی تورم</h3><p>ببین بازپرداخت وام، به قیمت امروز، از مبلغ دریافتی سنگین‌تر است یا سبک‌تر.</p></div>
-<div><h3>مقایسه سود واقعی</h3><p>سپرده، طلا، دلار و حتی وام‌گرفتن و سرمایه‌گذاری، همه پس از کسر تورم و اختلاف خرید و فروش.</p></div>
-<div><h3>وام با پرداخت اضافه</h3><p>ببین با یک پرداخت اضافه، وام چند ماه زودتر تمام می‌شود یا قسط چقدر کم می‌شود.</p></div>
-<div><h3>هزینه واقعی و توان بازپرداخت</h3><p>کارمزد و هزینه‌های جانبی را وارد کن تا نرخ مؤثر و سهم قسط از درآمدت را ببینی.</p></div>
-<div><h3>مقایسه تا ۴ وام</h3><p>اقساط مساوی، نزولی، قرض‌الحسنه و دوره تنفس؛ با جدول شمسی و خروجی اکسل و PDF.</p></div>
-<div><h3>ابزارهای کاربردی</h3><p>تسویه زودتر، جریمه دیرکرد، نرخ واقعی از روی قسط و حباب سکه.</p></div>
-</div></section>
-<section class="f"><h2 class="t2">نصب در کمتر از یک دقیقه</h2>
-<div class="how">
-<div><h3>اندروید و کامپیوتر</h3><ol><li>روی «نصب برنامه» بزن.</li><li>در پنجرهٔ مرورگر تأیید کن.</li><li>بعد از نصب، «ورود به برنامه» ظاهر می‌شود.</li></ol></div>
-<div><h3>آیفون</h3><ol><li>صفحه را در Safari باز کن.</li><li>دکمهٔ اشتراک‌گذاری را بزن.</li><li>«Add to Home Screen» را انتخاب کن.</li></ol></div>
-</div></section>
-<div class="priv"><div><b>اطلاعاتت فقط روی گوشی خودت می‌ماند</b><p>هیچ حسابی ساخته نمی‌شود و داده‌ای به سرور نمی‌رود. سناریوها را خودت پشتیبان می‌گیری.</p></div><a class="btn p" href="app.html">شروع کن</a></div>
+<a class="skip" href="#main">رفتن به محتوا</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <style>.ico{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}</style>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v10h14V10"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+    <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+    <symbol id="i-panel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 20v-7M12 20V5M17 20v-9"/></symbol>
+    <symbol id="i-command" viewBox="0 0 24 24"><path d="M9 9V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3Z"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke-width="3.2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9Z"/><path d="M19 16v4M17 18h4"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-2 0-1.3-1-1.6-1-2.6 0-1 .8-1.4 1.8-1.4H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7" r="1"/><circle cx="15.5" cy="7.5" r="1"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M5 7h14M5 7l-3 7a3 3 0 0 0 6 0ZM19 7l-3 7a3 3 0 0 0 6 0Z"/></symbol>
+    <symbol id="i-loan" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10.5h18M7 15h3"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10 12 4l9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19Z"/><path d="M12 10v4M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.6M8.2 13.2l7.6 4.6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 9"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4Z"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V5M7 10l5-5 5 5M5 20h14"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></symbol>
+  </defs>
+</svg>
+
+<div class="lp-wrap">
+<header class="lp-nav"><a class="row" href="index.html" style="text-decoration:none;font-weight:var(--fw-black)"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg><span>تراز</span></a><div class="row"><button type="button" class="btn btn--ghost btn--icon" data-theme-toggle aria-label="تغییر پوسته"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></button><a class="btn btn--outline" href="app.html">باز کردن برنامه</a></div></header>
+<main id="main" tabindex="-1">
+<section class="card card--brand card--hero pattern-girih lp-hero" aria-labelledby="h1">
+<div><h1 id="h1">پولت را از تورم جلو بینداز</h1><p class="lp-lead">وام، سپرده، طلا و دلار را کنار هم بسنج. تراز نشان می‌دهد هر گزینه، بعد از تورم، واقعاً چقدر برایت می‌ماند یا می‌برد.</p>
+<div class="lp-cta"><a class="btn btn--primary btn--lg" href="app.html">شروع محاسبه</a><a class="btn btn--outline" href="#how">چطور کار می‌کند؟</a></div>
+<p class="lp-fine">رایگان، آفلاین و بدون ثبت‌نام. داده‌ها فقط روی دستگاه خودت می‌مانند.</p></div>
+<div class="card lp-demo"><h2 class="card__title">امتحانش کن</h2>
+<label class="field"><span class="field__label">مبلغ وام: <b id="dv" class="num">۵۰۰ میلیون تومان</b></span><input id="ds" type="range" min="50" max="2000" step="50" value="500"></label>
+<div style="margin-block-start:var(--sp-3)"><div class="card kpi"><div class="kpi__label">قسط ماهانه (۳۶ ماه، ۲۳٪)</div><div class="kpi__value num" id="dp">—</div></div></div>
+<div id="dverdict" class="alert lp-verdict" role="status" aria-live="polite"></div></div>
+</section>
+<section class="lp-sec" aria-labelledby="f"><h2 id="f">همه‌چیز برای تصمیم مالی بهتر</h2><div class="lp-feats"><article class="card lp-feat"><span class="list__icon"><svg class="ico" aria-hidden="true"><use href="#i-loan"/></svg></span><h3>محاسبه دقیق وام</h3><p>چهار روش بازپرداخت، تنفس، کارمزد، پرداخت اضافه و جدول اقساط با تاریخ شمسی.</p></article><article class="card lp-feat"><span class="list__icon"><svg class="ico" aria-hidden="true"><use href="#i-scale"/></svg></span><h3>نرخ واقعی پس از تورم</h3><p>وام گران است یا ارزان؟ بازپرداخت‌ها را به قیمت امروز ببین، نه فقط عدد روی کاغذ.</p></article><article class="card lp-feat"><span class="list__icon"><svg class="ico" aria-hidden="true"><use href="#i-percent"/></svg></span><h3>مقایسه وام‌ها</h3><p>تا ۴ وام را با کارمزد و هزینه‌های جانبی کنار هم بگذار؛ بهترین را با نرخ مؤثر انتخاب کن.</p></article><article class="card lp-feat"><span class="list__icon"><svg class="ico" aria-hidden="true"><use href="#i-bank"/></svg></span><h3>سپرده، طلا و دلار</h3><p>ببین پول‌ات کجا از تورم جلو می‌افتد؛ سود ساده، مرکب یا ماهانه.</p></article><article class="card lp-feat"><span class="list__icon"><svg class="ico" aria-hidden="true"><use href="#i-coin"/></svg></span><h3>حباب سکه</h3><p>قیمت بازار را با ارزش ذاتی بسنج و اندازه حباب را ببین.</p></article><article class="card lp-feat"><span class="list__icon"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg></span><h3>خروجی حرفه‌ای</h3><p>CSV برای اکسل، PDF، تصویر نمودار و خلاصه آماده‌ی اشتراک.</p></article></div></section>
+<section class="lp-sec" id="how" aria-labelledby="hw"><h2 id="hw">سه قدم تا جواب</h2><div class="lp-how"><div class="card"><ol><li>مبلغ، نرخ و مدت را وارد کن.</li><li>تورم مورد انتظار را بنویس.</li><li>نرخ واقعی و بهترین گزینه را ببین.</li></ol></div><div class="card"><h3 class="card__title">نکته</h3><p class="muted">محاسبه‌ها تقریبی‌اند و مبنای نهایی قرارداد و ضوابط بانک است. تراز مشاوره مالی نیست.</p></div></div></section>
+<section class="lp-sec"><div class="card lp-priv"><div class="row"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><div><b>آفلاین و خصوصی</b><p class="muted" style="margin:0">بدون سرور، بدون حساب کاربری؛ بعد از اولین بار بدون اینترنت هم کار می‌کند.</p></div></div><a class="btn btn--primary" href="app.html">ورود به تراز</a></div></section>
 </main>
-<footer><div class="wrap">تراز ابزار تخمینی است و توصیهٔ مالی یا جایگزین محاسبهٔ رسمی بانک نیست. مبنای نهایی، قرارداد و آیین‌نامهٔ بانک است.</div></footer>
-<dialog id="dlg"><h3 id="dt"></h3><ol id="ds"></ol><button class="btn" id="dc">متوجه شدم</button></dialog>
+<footer class="lp-foot"><span class="muted">تراز — ساخته‌شده با AIhub Design System</span></footer>
+</div>
+<script src="aihub.bundle.js"></script><script src="calc.js"></script>
 <script>
-const $=i=>document.getElementById(i),fa=(x,d=0)=>x.toLocaleString('fa-IR',{maximumFractionDigits:d});
-const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
-if(standalone)location.replace('app.html');
-const R=[['سپرده بانکی',P=>P*.23],['خرید طلا',P=>P*(1.30*.97-1)],['خرید دلار',P=>P*(1.25*.985-1)]];
-function draw(){const i=+$('inf').value,er=50*i/100;$('iv').textContent=fa(i)+'٪';
- const v=R.map(([n,g])=>({n,r:g(50)-er}));
- $('bars').innerHTML=v.map(x=>`<div class="b"><div class="h"><span>${x.n}</span><b>${x.r>0?'+':''}${fa(x.r,1)} میلیون</b></div><div class="t"><i class="${x.r>=0?'p':'n'}" style="width:${Math.min(50,Math.abs(x.r)/20*50)}%"></i></div></div>`).join('');
- const b=v.reduce((a,c)=>c.r>a.r?c:a);
- $('vd').textContent=b.r>0?'بهترین گزینه با این فرض‌ها: '+b.n:'هیچ‌کدام از تورم جلو نزد؛ کم‌زیان‌ترین: '+b.n}
-$('inf').oninput=draw;draw();
-let dp=null;const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-function ui(){const ok=localStorage.getItem('taraz-installed')==='1';
- $('inst').classList.toggle('hide',ok);$('enter').classList.toggle('hide',!ok);$('web').classList.toggle('hide',ok);
- $('fine').textContent=ok?'نصب شد. از صفحهٔ اصلی گوشی هم می‌توانی بازش کنی.':'رایگان؛ حدود ۲۰۰ کیلوبایت و بدون حساب کاربری.'}
-try{ui()}catch(e){}
-addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e});
-addEventListener('appinstalled',()=>{try{localStorage.setItem('taraz-installed','1')}catch(e){}dp=null;ui()});
-$('inst').onclick=async()=>{
- if(dp){dp.prompt();const c=await dp.userChoice;if(c.outcome==='accepted'){try{localStorage.setItem('taraz-installed','1')}catch(e){}ui()}dp=null;return}
- $('dt').textContent=ios?'نصب روی آیفون':'نصب از منوی مرورگر';
- $('ds').innerHTML=ios?'<li>صفحه را در Safari باز کن.</li><li>دکمهٔ اشتراک‌گذاری را بزن.</li><li>«Add to Home Screen» را انتخاب کن.</li>':'<li>منوی مرورگر را باز کن.</li><li>گزینهٔ «نصب برنامه» یا «Add to Home screen» را بزن.</li><li>اگر گزینه‌ای نبود، صفحه را در Chrome یا Edge باز کن.</li>';
- $('dlg').showModal()};
-$('dc').onclick=()=>$('dlg').close();
-if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+(function(){var s=document.getElementById('ds'),fa=AIhub.fa,f=function(x){return fa(Math.round(x).toLocaleString('en'))};
+function go(){var P=+s.value*1e6,a=Calc.analyzeLoan({P:P,rate:.23,n:36,grace:0,method:'annuity',inflation:.35});
+document.getElementById('dv').textContent=fa(s.value)+' میلیون تومان';document.getElementById('dp').innerHTML=f(a.payment)+'<span class="kpi__unit">تومان</span>';
+var d=a.pv-a.netIn,v=document.getElementById('dverdict');v.className='alert lp-verdict '+(d<=0?'alert--success':'alert--warning');
+v.textContent=d<=0?'با تورم ۳۵٪، این وام به قیمت امروز '+f(-d)+' تومان کمتر از مبلغ دریافتی برایت تمام می‌شود.':'با تورم ۳۵٪، این وام به قیمت امروز '+f(d)+' تومان بیشتر از مبلغ دریافتی است.'}
+s.addEventListener('input',go);AIhub.ready(go)})();
 </script>
-</body>
-</html>
+</body></html>
